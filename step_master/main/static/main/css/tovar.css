@@ -1,0 +1,123 @@
+.produkt {
+    background: rgb(244, 242, 242);
+}
+
+.produtos_main-h {
+    /* Text Small Bold */
+    color: rgb(71, 71, 71);
+    font-family: Inter;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px;
+    letter-spacing: 0.75px;
+    text-align: center;
+    padding-bottom: 58px;
+}
+
+.produtos_filter-list {
+    display: flex;
+    margin-bottom: 20px;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.produtos_main {
+    display: flex;
+}
+
+.produtos_filter-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.produtos_filter-item-label {
+    /* Text X-Small - Desktop */
+    color: rgb(71, 71, 71);
+    font-family: Inter;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 22px;
+    letter-spacing: 0.25px;
+    text-align: left;
+}
+
+.produtos_filter-item-input {
+    box-sizing: border-box;
+    /* dark-gray-3 */
+    border: 1px solid rgb(102, 102, 102);
+    border-radius: 2px;
+
+    /* white */
+    background: rgb(255, 255, 255);
+}
+
+.produtos_filter-item input {
+    margin-right: 10px;
+}
+
+.produtos_filter {
+    margin-right: 20px;
+    padding: 30px;
+}
+
+.produtos_filter-list-h {
+    /* Text X-Small Bold */
+    color: rgb(71, 71, 71);
+    font-family: Inter;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 22px;
+    letter-spacing: 0.75px;
+    text-align: left;
+    margin-bottom: 10px;
+}
+
+.produtos_filter-h {
+    /* Text Small Bold */
+    color: rgb(71, 71, 71);
+    font-family: Inter;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px;
+    letter-spacing: 0.75px;
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.produtos_filter-hr {
+    /* light-gray-2 */
+    width: 248px;
+    border: 1px solid rgb(204, 204, 204);
+    margin-bottom: 20px;
+}
+
+.produtos_main-h{
+    font-size: 30px;
+    padding-top: 58px;
+}
+
+.produtos_item-up-img-sale{
+    width: 275px;
+    height: 250px;
+    margin-left: 10px;
+    margin-top: 37px;
+}
+
+
+.filter-button{
+    font-family: Inter;
+    padding: 10px;
+    background-color: rgb(201, 32, 113);
+    color: white;
+    border: none;
+    margin-bottom: 20px;
+}
+
+.show-all-button{
+    font-family: Inter;
+    padding: 10px;
+    background-color: rgb(201, 32, 113);
+    color: white;
+    border: none;
+}

@@ -1,0 +1,78 @@
+{% extends "main/layout.html" %}
+{% load static %}
+{% block title %}
+    {% if category %}Категория: {{ category.name }}{% else %}Товары{% endif %}
+{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'main/css/tovar.css' %}">
+
+<main class="produkt">
+    <div class="container">
+        <h2 class="produtos_main-h">
+            {% if category %}Категория: {{ category.name }}{% else %}Все товары{% endif %}
+        </h2>
+        
+
+        
+
+        <div class="produtos_main">
+            <div class="produtos_filter">
+                <h2 class="produtos_filter-h">Фильтр коллекций</h2>
+                <hr class="produtos_filter-hr">
+                <form method="GET" action="{% url 'tovar' %}">
+                    <div class="produtos_filter-list">
+                        {% for cat in categories %}
+                            <div class="produtos_filter-item">
+                                <label for="category-{{ cat.id }}" class="produtos_filter-item-link">
+                                    <input 
+                                        type="checkbox" 
+                                        name="categories" 
+                                        value="{{ cat.id }}" 
+                                        id="category-{{ cat.id }}" 
+                                        {% if cat.id in request.GET.categories %}checked{% endif %}
+                                    >
+                                    {{ cat.name }}
+                                </label>
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <button type="submit" class="filter-button">Применить фильтр</button>
+                </form>
+                
+                <a href="{% url 'tovar' %}" ><button type="submit" class="show-all-button">Показать все товары</button></a>
+            </div>
+            
+            
+            <!-- Список товаров -->
+            <div class="works__items items-works produtos_list">
+                <div class="items-works__body">
+                    {% for product in products %}
+                        <a href="{% url 'product_detail' product.id product.slug %}" class="items-works__item popup-link">
+                            <div class="produtos_item">
+                                <div class="produtos_item-up">
+                                    {% if product.image %}
+                                        <img class="produtos_item-up-img-sale" src="{{ product.image.url }}" alt="{{ product.name }}">
+                                    {% else %}
+                                        <img class="produtos_item-up-img-sale" src="{% static 'main/images/no_image.png' %}" alt="Нет изображения">
+                                    {% endif %}
+                                </div>
+                                <div class="produtos_item-down">
+                                    <span class="produtos_item-down-span">{{ product.category.name }}</span>
+                                    <a href="{% url 'product_detail' product.id product.slug %}" class="produtos_item-down-a">{{ product.name }}</a>
+                                    <div class="produtos_item-down-a-sale">
+                                        <span>₽{{ product.price }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    {% empty %}
+                        <p class="no-products">Нет доступных товаров в данной категории.</p>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+{% endblock %}

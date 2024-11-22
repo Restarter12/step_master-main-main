@@ -1,0 +1,75 @@
+{% extends "main/layout.html" %}
+{% load static %}
+{% block title %}{{ product.name }}{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'main/css/tovar-detail.css' %}">
+<!-- Подключение CSS Swiper -->
+<!-- Подключение CSS Swiper -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css">
+<link rel="stylesheet" href="{% static 'main/css/tovar-detail.css' %}">
+
+<div class="product-detail">
+    <div class="containerr">
+        <div class="product-detail-row">
+            <div class="product-detail-image">
+                <div class="swiper">
+                    <div class="swiper-wrapper">
+                        <!-- Главная картинка (первый слайд) -->
+                        <div class="swiper-slide">
+                            {% if product.image %}
+                                <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                            {% else %}
+                                <p>Нет главного изображения</p>
+                            {% endif %}
+                        </div>
+
+                        <!-- Доп. изображение 1 (второй слайд) -->
+                        {% if product.additional_images.count > 0 %}
+                            <div class="swiper-slide">
+                                <img src="{{ product.additional_images.all.0.image.url }}" alt="Доп. изображение 1">
+                            </div>
+                        {% endif %}
+
+                        <!-- Доп. изображение 2 (третий слайд) -->
+                        {% if product.additional_images.count > 1 %}
+                            <div class="swiper-slide">
+                                <img src="{{ product.additional_images.all.1.image.url }}" alt="Доп. изображение 2">
+                            </div>
+                        {% endif %}
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Блок с информацией -->
+            <div class="product-detail-info">
+                <h1 class="product-detail-h">{{ product.name }}</h1>
+                <div class="product-detail-text">
+                    <p class="product-detail-parag-price">Цена: ₽{{ product.price }}</p>
+                    <p class="product-detail-parag-text">{{ product.description }}</p>
+                    <p class="product-detail-aploy">
+                        {% if product.available %}В наличии{% else %}Нет в наличии{% endif %}
+                    </p>
+                </div>
+    
+                <p class="product-detail-category">Категория: {{ product.category.name }}</p>
+
+                <p class="price">₽{{ product.price }}</p>
+
+                <!-- Форма для добавления в корзину -->
+                <form action="{% url 'cart:cart_add' product.id %}" method="post">
+                    {% csrf_token %}
+                    <div class="quantity-input">
+                        <label for="quantity">Количество:</label>
+                        {{ cart_product_form.quantity }}
+                    </div>
+                    <input type="submit" value="В корзину">
+                </form>
+            </div>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+        <script src="{% static 'main/js/detail-product.js' %}"></script>
+    </div>
+</div>
+{% endblock %}
