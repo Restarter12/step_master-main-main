@@ -1,10 +1,12 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Category, Product
 from cart.forms import CartAddProductForm
-from django.db.models import Q
 from .forms import OrderForm
+from cart.cart import Cart
+from django.contrib import messages 
 
-# Функция для отображения списка товаров с фильтрацией по категориям
+
+# Отображение списка товаров с фильтрацией по категориям
 def product_list(request):
     categories = Category.objects.all()
     selected_categories = request.GET.getlist('categories')  # Список выбранных категорий
@@ -26,8 +28,6 @@ def index(request):
     popular_products = Product.objects.filter(available=True).order_by('-created')[:8]
     return render(request, 'main/index.html', {'popular_products': popular_products})
 
-def akses(request):
-    return render(request, 'main/akses.html')
 
 # Функция для страницы "О нас"
 def about(request):
@@ -47,17 +47,28 @@ def product_detail(request, id, slug):
         'cart_product_form': cart_product_form
     })
 
-
+# Отправка заказа
 def submit_order(request):
+    cart = Cart(request)  # Получаем текущую корзину
+    if len(cart) == 0:  # Проверяем, пуста ли корзина
+        messages.error(request, "Корзина пуста. Добавьте товары перед оформлением заказа.")
+        return redirect('cart:cart_detail')  # Перенаправляем на страницу корзины
+
     if request.method == 'POST':
         form = OrderForm(request.POST)
         if form.is_valid():
-            form.save()  # Сохранение данных в базу
-            return redirect('success')  # Укажите страницу после успешной отправки
+            order = form.save(commit=False)# Сохраняем форму без записи в базу данных
+            order.total_price = cart.get_total_price() # Общая сумма заказа
+            order.products = ", ".join([f"{item['product']} (x{item['quantity']})" for item in cart])  # Формируем список товаров с их количеством
+            order.save()    # Сохраняем заказ в базу данных
+            cart.clear()  # Очищаем корзину после оформления заказа
+            messages.success(request, "Ваш заказ успешно оформлен!")
+            return redirect('success')  
     else:
         form = OrderForm()
-
+    # Отображаем форму для оформления заказа
     return render(request, 'main/layout.html', {'form': form})
 
+# Страница успешного заказа
 def success(request):
     return render(request, 'main/success.html')

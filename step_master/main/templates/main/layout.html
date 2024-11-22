@@ -1,6 +1,6 @@
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,18 +9,21 @@
     <link rel="stylesheet" href="{% static 'main/css/main.css' %}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 </head>
+
 <body>
     <div class="container">
         <header class="header">
             <div class="header_up-logo">
                 <a href="{% url 'home' %}" class="header_up-logo"><img src="{% static 'main/img/logo2.svg' %}" alt="">
-                <h1 class="heaeder_up-h">
-                    StepMaster
-                </h1>
-            </a>
+                    <h1 class="heaeder_up-h">
+                        StepMaster
+                    </h1>
+                </a>
             </div>
             <div class="header_form-input">
                 <input class="heaeder_up-input" placeholder="Искать продукт..." type="text">
@@ -32,24 +35,21 @@
             <div class="cart">
                 {% with total_items=cart|length %}
                 {% if total_items > 0 %}
-                    В корзине
-                    <a href="{% url 'cart:cart_detail' %}">
-                        {{ total_items }}шт, ₽{{ cart.get_total_price }}
-                    </a>
+                В корзине
+                <a href="{% url 'cart:cart_detail' %}">
+                    {{ total_items }}шт, ₽{{ cart.get_total_price }}
+                </a>
                 {% else %}
-                    <a href="{% url 'cart:cart_detail' %}">Пустая корзина</a>
+                <a href="{% url 'cart:cart_detail' %}">Пустая корзина</a>
                 {% endif %}
-            {% endwith %}
-            </div>  
+                {% endwith %}
+            </div>
         </header>
 
         <div class="header_down">
             <ul class="header_down-list">
                 <a href="{% url 'home' %} " class="header_down-item ">
                     <li>Главная</li>
-                </a>
-                <a href="{% url 'akses' %}" class="header_down-item">
-                    <li>Аксессуары</li>
                 </a>
                 <a href="{% url 'tovar' %}" class="header_down-item">
                     <li>Товары</li>
@@ -64,7 +64,7 @@
 
 
     {% block content %}
-    
+
     {% endblock %}
     <footer class="footer">
         <div class="container">
@@ -81,9 +81,12 @@
                         обуви <br> для всех возрастов и предпочтений.</p>
 
                     <ul class="footer_all-list">
-                        <li class="footer_all-item"><a href="#"><img src="{% static 'main/img/facebook.svg' %}" alt=""></a></li>
-                        <li class="footer_all-item"><a href="#"><img src="{% static 'main/img/instagram.svg' %}" alt=""></a></li>
-                        <li class="footer_all-item"><a href="#"><img src="{% static 'main/img/twiter.svg' %}" alt=""></a></li>
+                        <li class="footer_all-item"><a href="#"><img src="{% static 'main/img/facebook.svg' %}"
+                                    alt=""></a></li>
+                        <li class="footer_all-item"><a href="#"><img src="{% static 'main/img/instagram.svg' %}"
+                                    alt=""></a></li>
+                        <li class="footer_all-item"><a href="#"><img src="{% static 'main/img/twiter.svg' %}"
+                                    alt=""></a></li>
                     </ul>
                 </div>
                 <div class="footer_center">
@@ -162,13 +165,25 @@
                         </div>
                         {{ form.as_p }}
                         <button type="submit" class="submit_button">Отправить</button>
+                        <!-- Вывод если корзина пуста -->
+                        {% if messages %}
+                        <div class="messages">
+                            {% for message in messages %}
+                            <div class="message {{ message.tags }}">
+                                {{ message }}
+                            </div>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
                     </div>
                 </form>
             </div>
         </div>
     </div>
+    
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="{% static 'main/js/product-slider.js' %}"></script>
     <script src="{% static 'main/js/scripy_index.js' %}"></script>
 </body>
+
 </html>

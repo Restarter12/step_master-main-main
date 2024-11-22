@@ -9,7 +9,7 @@ def image_show(self, obj):
         return mark_safe(f"<img src='{obj.image.url}' width='60' />")
     return "Нет изображения"
 
-image_show.__name__ = "Изображение"  # Устанавливаем имя для метода отображения
+image_show.__name__ = "Изображение" 
 
 
 @admin.register(Category)
@@ -17,13 +17,13 @@ class CategoryAdmin(admin.ModelAdmin):
     list_display = ['name', 'slug']
     prepopulated_fields = {'slug': ('name',)}
 
-
+# Доп фото
 class ProductImageInline(admin.TabularInline):
     model = ProductImage
-    extra = 2  # Указываем, сколько дополнительных изображений будет выводиться
-    max_num = 2  # Максимальное количество дополнительных изображений на одну модель
+    extra = 2 
+    max_num = 2  
 
-    
+
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
     list_display = ['name', 'slug', 'image_show', 'price', 'available', 'created', 'updated']
@@ -32,23 +32,25 @@ class ProductAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('name',)}
     inlines = [ProductImageInline]
 
-    # Используем общую функцию image_show
+
     def image_show(self, obj):
-        return image_show(self, obj)  # Вызов глобальной функции
+        return image_show(self, obj) 
 
 
 @admin.register(ProductImage)
 class ProductImageAdmin(admin.ModelAdmin):
     list_display = ['product', 'image_show']
-
-    # Используем общую функцию image_show
     def image_show(self, obj):
-        return image_show(self, obj)  # Вызов глобальной функции
+        return image_show(self, obj)  
     
-
+# Создание формы в админке
 @admin.register(Order)
 class OrderAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name', 'email', 'phone', 'created_at')  # Поля для отображения в списке
-    list_filter = ('created_at',)  # Добавляет фильтрацию по дате создания
-    search_fields = ('name', 'email', 'phone')  # Поиск по имени, email и телефону
-    ordering = ('-created_at',)  # Сортировка: сначала новые заказы
+    list_display = ('id', 'name', 'email', 'phone', 'total_price', 'display_products', 'created_at')
+    
+    def display_products(self, obj):
+        return obj.products
+
+    display_products.short_description = "Товары"
+
+

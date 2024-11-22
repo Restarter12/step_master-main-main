@@ -1,6 +1,7 @@
 from django import forms
 from .models import Order
 
+# создание формы
 class OrderForm(forms.ModelForm):
     class Meta:
         model = Order
@@ -9,4 +10,4 @@ class OrderForm(forms.ModelForm):
             'name': forms.TextInput(attrs={'placeholder': 'ФИО', 'class': 'popup_input'}),
             'email': forms.EmailInput(attrs={'placeholder': 'e-mail', 'class': 'popup_input'}),
             'phone': forms.TextInput(attrs={'placeholder': 'Телефон', 'class': 'popup_input'}),
-        } 
+        }

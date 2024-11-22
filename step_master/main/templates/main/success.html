@@ -1,12 +1,20 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Спасибо за заказ!</title>
+    {% load static %}
 </head>
 <body>
-    <h1>Ваш заказ успешно отправлен!</h1>
-    <a href="{% url 'home' %}">Вернуться на главную</a>
+    <div class="content">
+        <link rel="stylesheet" href="{% static 'main/css/main.css' %}">
+        <div class="message-container">
+            <h1>Ваш заказ успешно отправлен!</h1>
+            <p class="message-description">Спасибо за покупку! Мы получили ваш заказ и скоро с вами свяжемся.</p>
+            <a href="{% url 'home' %}" class="return-home-link">Вернуться на главную</a>
+        </div>
+    </div>
 </body>
 </html>
