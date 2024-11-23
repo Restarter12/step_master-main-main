@@ -4,7 +4,10 @@ from cart.forms import CartAddProductForm
 from .forms import OrderForm
 from cart.cart import Cart
 from django.contrib import messages 
-
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth import login
+from django.contrib.auth import logout
+from django.contrib.auth.decorators import login_required
 
 # Отображение списка товаров с фильтрацией по категориям
 def product_list(request):
@@ -49,26 +52,51 @@ def product_detail(request, id, slug):
 
 # Отправка заказа
 def submit_order(request):
-    cart = Cart(request)  # Получаем текущую корзину
-    if len(cart) == 0:  # Проверяем, пуста ли корзина
+    cart = Cart(request)
+    if len(cart) == 0:
         messages.error(request, "Корзина пуста. Добавьте товары перед оформлением заказа.")
-        return redirect('cart:cart_detail')  # Перенаправляем на страницу корзины
+        return redirect('cart:cart_detail')
 
     if request.method == 'POST':
         form = OrderForm(request.POST)
         if form.is_valid():
-            order = form.save(commit=False)# Сохраняем форму без записи в базу данных
-            order.total_price = cart.get_total_price() # Общая сумма заказа
-            order.products = ", ".join([f"{item['product']} (x{item['quantity']})" for item in cart])  # Формируем список товаров с их количеством
-            order.save()    # Сохраняем заказ в базу данных
-            cart.clear()  # Очищаем корзину после оформления заказа
+            order = form.save(commit=False)
+            order.total_price = cart.get_total_price()
+            order.products = ", ".join([f"{item['product']} (x{item['quantity']})" for item in cart])
+            order.save()
+            cart.clear()
             messages.success(request, "Ваш заказ успешно оформлен!")
-            return redirect('success')  
+            return redirect('success')
     else:
         form = OrderForm()
-    # Отображаем форму для оформления заказа
-    return render(request, 'main/layout.html', {'form': form})
+    return render(request, 'main/submit_order.html', {'form': form})
 
 # Страница успешного заказа
 def success(request):
     return render(request, 'main/success.html')
+
+
+def register(request):
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            return redirect('home')
+    else:
+        form = UserCreationForm()
+    return render(request, 'main/register.html', {'form': form})
+
+def custom_logout(request):
+    logout(request)
+    return redirect('/')
+
+
+@login_required
+def place_order(request):
+    if request.method == 'POST':
+        # Логика оформления заказа
+        return redirect('success_page')  # Перенаправление на страницу успешного оформления
+    return render(request, 'order_form.html')
+
+

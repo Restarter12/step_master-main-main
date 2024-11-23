@@ -25,12 +25,23 @@
                     </h1>
                 </a>
             </div>
-            <div class="header_form-input">
-                <input class="heaeder_up-input" placeholder="Искать продукт..." type="text">
-                <a href="#"><img class="header_search" src="{% static 'main/img/Search.svg' %}" alt=""></a>
-            </div>
             <div class="headeer_up_rigth">
-                <a href="#popup" class="popup-link"> <button class="heaeder_up-btn">Оформить</button></a>
+                <a href="#popup" class="popup-link">
+                    <button class="heaeder_up-btn">Оформить</button>
+                </a>
+                {% if user.is_authenticated %}
+                    <form action="{% url 'logout' %}" method="post" style="display: inline;">
+                        {% csrf_token %}
+                        <button type="submit" class="heaeder_up-btn">Выйти</button>
+                    </form>
+                {% else %}
+                    <a href="{% url 'login' %}" class="popup-link">
+                        <button class="heaeder_up-btn">Войти</button>
+                    </a>
+                    <a href="{% url 'register' %}" class="popup-link">
+                        <button class="heaeder_up-btn">Зарегистрироваться</button>
+                    </a>
+                {% endif %}
             </div>
             <div class="cart">
                 {% with total_items=cart|length %}
@@ -180,7 +191,7 @@
             </div>
         </div>
     </div>
-    
+
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="{% static 'main/js/product-slider.js' %}"></script>
     <script src="{% static 'main/js/scripy_index.js' %}"></script>

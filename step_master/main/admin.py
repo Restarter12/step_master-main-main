@@ -52,5 +52,9 @@ class OrderAdmin(admin.ModelAdmin):
         return obj.products
 
     display_products.short_description = "Товары"
+    class Meta:
+        permissions = [
+            ("can_place_order", "Can place order"),
+        ]
 
 
