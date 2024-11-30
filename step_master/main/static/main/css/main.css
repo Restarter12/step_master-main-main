@@ -1,5 +1,6 @@
 html {
     box-sizing: border-box;
+    font-family: Inter;
 }
 
 *,
@@ -46,7 +47,7 @@ a {
     align-items: center;
     margin-top: 47px;
     margin-bottom: 40px;
-    justify-content: space-evenly;
+    justify-content: space-between;
 }
 
 .header_up {
@@ -74,7 +75,6 @@ a {
     font-weight: 600;
     line-height: 44px;
     letter-spacing: -1%;
-    margin-right: 27px;
 }
 
 .heaeder_up-input {
@@ -104,14 +104,16 @@ a {
 }
 
 .headeer_up_rigth {
-    margin-left: 48px;
+    display: flex;
+    align-items: center;
+    gap: 80px;
 }
 
 .messages {
     margin: 20px 0;
 }
 
-.message {
+.heaeder_up-btn .message {
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -147,7 +149,6 @@ input:focus::placeholder {
 
 .heaeder_up-btn {
     border-radius: 8px;
-    /* primary */
     background: rgb(201, 32, 113);
     color: rgb(245, 245, 245);
     font-family: "Inter", sans-serif;
@@ -158,11 +159,14 @@ input:focus::placeholder {
     text-align: center;
     padding: 10px 35px;
     border: none;
-    margin-right: 70px;
 
 
 }
 
+.cart-img {
+    width: 40px;
+    height: 40px;
+}
 
 .header_down-list {
     display: flex;
@@ -191,7 +195,6 @@ input:focus::placeholder {
 }
 
 .swiper-slide-p {
-    /* Text Small Bold */
     color: rgb(246, 170, 28);
     font-family: Inter;
     font-size: 16px;
@@ -228,7 +231,6 @@ input:focus::placeholder {
 
 .swiper-slide-btn {
     border-radius: 8px;
-    /* primary */
     background: rgb(201, 32, 113);
     color: rgb(245, 245, 245);
     font-family: Inter;
@@ -273,6 +275,7 @@ input:focus::placeholder {
 
 .collection_sale-list {
     display: flex;
+    justify-content: center;
     gap: 24px;
 
 }
@@ -399,6 +402,7 @@ input:focus::placeholder {
     line-height: 38px;
     letter-spacing: 0.75px;
     margin-bottom: 20px;
+    text-align: center;
 }
 
 .colection_filter {
@@ -839,8 +843,9 @@ input:focus {
     font-size: 16px;
     transition: border-color 0.3s ease;
 }
+
 .popup_input:focus {
-    border-color: #e83e8c; 
+    border-color: #e83e8c;
 }
 
 .submit_button {
@@ -855,7 +860,7 @@ input:focus {
 }
 
 .submit_button:hover {
-    background-color: #d6336c; 
+    background-color: #d6336c;
 }
 
 .message {
@@ -944,7 +949,7 @@ input:focus {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-/* Заголовок формы */
+
 .auth-container h2 {
     text-align: center;
     font-size: 24px;
@@ -952,13 +957,20 @@ input:focus {
     color: #333;
 }
 
-/* Стили для формы */
+.registe-auth {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+
 form {
     display: flex;
     flex-direction: column;
 }
 
-/* Поля ввода */
+
 form input[type="text"],
 form input[type="password"],
 form input[type="email"],
@@ -979,7 +991,7 @@ form select:focus {
     box-shadow: 0 0 4px rgba(0, 123, 255, 0.5);
 }
 
-/* Кнопка отправки */
+
 .auth-button {
     padding: 10px 20px;
     font-size: 16px;
@@ -1036,14 +1048,14 @@ form .form-group {
         background: rgb(201, 32, 113);
         color: rgb(245, 245, 245);
         font-family: "Inter", sans-serif;
-        font-size: 14px;
+        font-size: 11px;
         font-weight: 700;
         line-height: 22px;
         letter-spacing: 0.75px;
         text-align: center;
-        padding: 10px 35px;
+        padding: 5px 20px;
         border: none;
-        margin-right: 40px;
+        margin-right: 15px;
     }
 
     .heaeder_up-h {
@@ -1053,7 +1065,6 @@ form .form-group {
         font-weight: 600;
         line-height: 44px;
         letter-spacing: -1%;
-        margin-right: 290px;
     }
 
     .header_search {
@@ -1304,6 +1315,33 @@ form .form-group {
         width: 371px;
     }
 
+    .headeer_up_rigth {
+        display: flex;
+        gap: 10px;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .cart-img {
+        width: 35px;
+        height: 30px;
+    }
+
+    .logo-img{
+        width: 20px;
+        height: 20px;
+    }
+
+    .heaeder_up-h {
+        color: rgb(201, 32, 113);
+        font-family: "Inter", sans-serif;
+        font-size: 24.4px;
+        font-weight: 600;
+        line-height: 44px;
+        letter-spacing: -1%;
+        margin-right: 0;
+    }
+
     .footer_center-two {
         padding-right: 115px;
         padding-bottom: 20px;
@@ -1318,6 +1356,83 @@ form .form-group {
         letter-spacing: 0%;
         text-align: left;
         padding-bottom: 15px;
+    }
+
+    .swiper-slide_rigth_sneaker{
+        display: none;
+    }
+
+    .swiper-slide_rigth_ornament{
+        display: none;
+    }
+    
+    .swiper-slide-h {
+        color: rgb(31, 31, 31);
+        font-family: Inter;
+        font-size: 49px;
+        font-weight: 800;
+        line-height: 48px;
+        letter-spacing: 1px;
+        text-align: left;
+        padding-bottom: 20px;
+    }
+
+    .swiper-slide-btn {
+        border-radius: 8px;
+        background: rgb(201, 32, 113);
+        color: rgb(245, 245, 245);
+        font-family: Inter;
+        font-size: 16px;
+        font-weight: 700;
+        line-height: 24px;
+        letter-spacing: 0.75px;
+        text-align: center;
+        padding: 10px 19px;
+        border: none;
+        margin-left: 10px;
+    }
+
+    .produtos-text-p {
+        color: rgb(71, 71, 71);
+        font-family: Inter;
+        font-size: 19px;
+        font-weight: 700;
+        line-height: 30px;
+        letter-spacing: 0.75px;
+        text-align: left;
+        padding-left: 31px;
+    }
+
+    .produtos-text-a {
+        color: rgb(201, 32, 113);
+        font-family: Inter;
+        font-size: 17px;
+        font-weight: 400;
+        line-height: 30px;
+        letter-spacing: 0.75px;
+        text-align: left;
+        margin-right: 52px;
+    }
+
+    .collection_sale-item-h {
+        color: rgb(31, 31, 31);
+        font-family: Inter;
+        font-size: 24px;
+        font-weight: 700;
+        line-height: 36px;
+        letter-spacing: 1px;
+        text-align: left;
+        margin-top: 10px;
+        margin-bottom: 20px;
+    }
+
+    .oferts_img {
+        margin-right: 42px;
+        width: 340px;
+    }
+
+    .footer_contact{
+        padding-bottom: 10px;
     }
 
     .footer_center {

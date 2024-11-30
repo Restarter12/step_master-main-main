@@ -19,13 +19,30 @@
     <div class="container">
         <header class="header">
             <div class="header_up-logo">
-                <a href="{% url 'home' %}" class="header_up-logo"><img src="{% static 'main/img/logo2.svg' %}" alt="">
+                <a href="{% url 'home' %}" class="header_up-logo"><img class="logo-img" src="{% static 'main/img/logo2.svg' %}" alt="">
                     <h1 class="heaeder_up-h">
                         StepMaster
                     </h1>
                 </a>
             </div>
+
+
+
             <div class="headeer_up_rigth">
+                <div class="cart">
+                    {% with total_items=cart|length %}
+                    {% if total_items > 0 %}
+                    В корзине
+                    <a href="{% url 'cart:cart_detail' %}">
+                        {{ total_items }}шт, ₽{{ cart.get_total_price }}
+                    </a>
+                    {% else %}
+                    <a href="{% url 'cart:cart_detail' %}">
+                        <img class="cart-img" src="{% static 'main/img/cart.png' %}" alt="корзина">
+                    </a>
+                    {% endif %}
+                    {% endwith %}
+                </div>
                 <a href="#popup" class="popup-link">
                     <button class="heaeder_up-btn">Оформить</button>
                 </a>
@@ -35,25 +52,15 @@
                         <button type="submit" class="heaeder_up-btn">Выйти</button>
                     </form>
                 {% else %}
+                <div class="registe-auth">
                     <a href="{% url 'login' %}" class="popup-link">
                         <button class="heaeder_up-btn">Войти</button>
                     </a>
                     <a href="{% url 'register' %}" class="popup-link">
                         <button class="heaeder_up-btn">Зарегистрироваться</button>
                     </a>
+                </div>
                 {% endif %}
-            </div>
-            <div class="cart">
-                {% with total_items=cart|length %}
-                {% if total_items > 0 %}
-                В корзине
-                <a href="{% url 'cart:cart_detail' %}">
-                    {{ total_items }}шт, ₽{{ cart.get_total_price }}
-                </a>
-                {% else %}
-                <a href="{% url 'cart:cart_detail' %}">Пустая корзина</a>
-                {% endif %}
-                {% endwith %}
             </div>
         </header>
 
