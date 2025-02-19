@@ -42,9 +42,6 @@
                     {% endif %}
                     {% endwith %}
                 </div>
-                <a href="#popup" class="popup-link">
-                    <button class="heaeder_up-btn">Оформить</button>
-                </a>
                 {% if user.is_authenticated %}
                     <form action="{% url 'logout' %}" method="post" style="display: inline;">
                         {% csrf_token %}

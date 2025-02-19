@@ -111,7 +111,7 @@ a {
 .headeer_up_rigth {
     display: flex;
     align-items: center;
-    gap: 80px;
+    gap: 40px;
 }
 
 .messages {
@@ -212,7 +212,6 @@ input:focus::placeholder {
 
 .main {
     background: rgb(244, 242, 242);
-    margin-bottom: 108px;
 }
 
 .swiper-slide-p {
@@ -281,7 +280,7 @@ input:focus::placeholder {
 
 .swiper-slide {
     padding-top: 124px;
-    padding-bottom: 205px;
+    padding-bottom: 100px;
 }
 
 .swiper-slide_rigth_sneaker {
@@ -328,20 +327,6 @@ input:focus::placeholder {
 
 }
 
-.collection_sale-item-p {
-    border-radius: 29px;
-    background: rgb(231, 255, 134);
-    color: rgb(71, 71, 71);
-    font-family: Inter;
-    font-size: 14px;
-    font-weight: 700;
-    line-height: 22px;
-    letter-spacing: 0.75px;
-    text-align: center;
-    width: 96px;
-    height: 32px;
-    padding: 5px;
-}
 
 .collection_sale-item-img-fut {
     position: absolute;
@@ -493,8 +478,17 @@ input:focus::placeholder {
 
 /* Продукты */
 
-.produtos {
-    margin-bottom: 80px;
+.produtos{
+    padding-bottom: 80px;
+}
+
+.produtos_item{
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.produtos_item:hover {
+    transform: scale(1.05); 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); 
 }
 
 
@@ -636,7 +630,7 @@ input:focus::placeholder {
 }
 
 .oferts_img {
-    margin-right: 67px;
+    margin-right: 45px;
 }
 
 .oferta-span {
@@ -685,12 +679,20 @@ input:focus::placeholder {
     text-align: center;
     padding: 10px 55px;
     border: none;
+    cursor: pointer;
+    transition: color 0.3s ease, transform 0.3s ease;
 }
-
+.oferta-btn:hover{
+    background: rgb(170, 27, 97); 
+    color: rgb(255, 255, 255); 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease; 
+}
 .oferts_text {
     margin-top: 20px;
 }
 
+/* Футер */
 
 .footer {
     background: rgb(31, 31, 31);
@@ -1002,7 +1004,6 @@ input:focus {
 
 .registe-auth {
     display: flex;
-    flex-direction: column;
     align-items: center;
     gap: 10px;
 }

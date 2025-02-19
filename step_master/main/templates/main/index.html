@@ -13,40 +13,23 @@
                         <h1 class="swiper-slide-h">Распродажа <br> Nike 🔥</h1>
                         <p class="swiper-slide-p2">На этой неделе у Nike проходит грандиозная распродажа <br> с
                             большими скидками на всю коллекцию! </p>
-                        <a class="swiper-slide-a popup-link" href="#popup"><button
+                        <a class="swiper-slide-a popup-link" href="{% url 'tovar' %}"><button
                                 class="swiper-slide-btn">Заказать</button></a>
                         <img class="swiper-slide_rigth_sneaker" src="{% static 'main/img/whiteSneaker.png' %}" alt="">
                         <img class="swiper-slide_rigth_ornament" src="{% static 'main/img/Ornament.png' %}" alt="">
                     </div>
                     <div class="swiper-slide">
-                        <p class="swiper-slide-p">Лучшие персонализированные предложения</p>
-                        <h1 class="swiper-slide-h">Распродажа <br> Nike 🔥</h1>
-                        <p class="swiper-slide-p2">На этой неделе у Nike проходит грандиозная распродажа <br> с
-                            большими скидками на всю коллекцию! </p>
-                        <a class="swiper-slide-a popup-link" href="#popup"><button
-                                class="swiper-slide-btn">Заказать</button></a>
-                        <img class="swiper-slide_rigth_sneaker" src="{% static 'main/img/whiteSneaker.png' %}" alt="">
-                        <img class="swiper-slide_rigth_ornament" src="{% static 'main/img/Ornament.png' %}" alt="">
-                    </div>
-                    <div class="swiper-slide">
-                        <p class="swiper-slide-p">Лучшие персонализированные предложения</p>
-                        <h1 class="swiper-slide-h">Распродажа <br> Nike 🔥</h1>
-                        <p class="swiper-slide-p2">На этой неделе у Nike проходит грандиозная распродажа <br> с
-                            большими скидками на всю коллекцию! </p>
-                        <a class="swiper-slide-a popup-link" href="#popup"><button
-                                class="swiper-slide-btn">Заказать</button></a>
-                        <img class="swiper-slide_rigth_sneaker" src="{% static 'main/img/whiteSneaker.png' %}" alt="">
-                        <img class="swiper-slide_rigth_ornament" src="{% static 'main/img/Ornament.png' %}" alt="">
-                    </div>
-                    <div class="swiper-slide">
-                        <p class="swiper-slide-p">Лучшие персонализированные предложения</p>
-                        <h1 class="swiper-slide-h">Распродажа <br> Nike 🔥</h1>
-                        <p class="swiper-slide-p2">На этой неделе у Nike проходит грандиозная распродажа <br> с
-                            большими скидками на всю коллекцию! </p>
-                        <a class="swiper-slide-a popup-link" href="#popup"><button
-                                class="swiper-slide-btn">Заказать</button></a>
-                        <img class="swiper-slide_rigth_sneaker" src="{% static 'main/img/whiteSneaker.png' %}" alt="">
-                        <img class="swiper-slide_rigth_ornament" src="{% static 'main/img/Ornament.png' %}" alt="">
+                        <div class="oferts_all">
+                            <img class="oferts_img" src="{% static 'main/img/sneakerOferts.png' %}" alt="">
+                            <div class="oferts_text">
+                                <p class="oferta-span">Специальное предложение</p>
+                                <h2 class="oferta-h">Коллекционное издание <br> Air Jordan</h2>
+                                <p class="oferta-p">Эксклюзивные модели, созданные для тех, кто ценит уникальный стиль и высокое
+                                    качество.</p>
+                                <a href="{% url 'tovar' %}" class="popup-link"><button class="oferta-btn">Заказать</button></a>
+            
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="swiper-pagination"></div>
@@ -58,30 +41,23 @@
             <div class="collection_sale-list">
                 <div class="collection_sale-item">
                     <div class="collection_sale-item-text">
-                        <p class="collection_sale-item-p">
-                            30% OFF
-                        </p>
                         <h2 class="collection_sale-item-h">
-                            Новый выпуск <br> Supreme
+                            Коллекция <br> Adidas
                         </h2>
-                        <a href="#popup" class="popup-link">
+                        <a href="{% url 'tovar' %}" class="popup-link">
                             <button class="collection_sale-item-btn">
                                 Заказать
                             </button>
                         </a>
                     </div>
-                    <img class="collection_sale-item-img-fut" src="{% static 'main/img/starWarsStormTrooperSupreme.png' %}"
-                        alt="">
+                    <img class="collection_sale-item-img-sneaker" src="{% static 'main/img/sneakerGray.png' %}" alt="">
                 </div>
                 <div class="collection_sale-item">
                     <div class="collection_sale-item-text">
-                        <p class="collection_sale-item-p">
-                            30% OFF
-                        </p>
                         <h2 class="collection_sale-item-h">
-                            Коллекция <br> Adidas
+                            Коллекция <br> Nike
                         </h2>
-                        <a href="#popup" class="popup-link">
+                        <a href="{% url 'tovar' %}" class="popup-link">
                             <button class="collection_sale-item-btn">
                                 Заказать
                             </button>
@@ -123,21 +99,6 @@
                         </div>
                     </a>
                     {% endfor %}
-                </div>
-            </div>
-        </div>
-    </section>
-    <section class="oferts">
-        <div class="container">
-            <div class="oferts_all">
-                <img class="oferts_img" src="{% static 'main/img/sneakerOferts.png' %}" alt="">
-                <div class="oferts_text">
-                    <p class="oferta-span">Специальное предложение</p>
-                    <h2 class="oferta-h">Коллекционное издание <br> Air Jordan</h2>
-                    <p class="oferta-p">Эксклюзивные модели, созданные для тех, кто ценит уникальный стиль и высокое
-                        качество.</p>
-                    <a href="#popup" class="popup-link"><button class="oferta-btn">Заказать</button></a>
-
                 </div>
             </div>
         </div>

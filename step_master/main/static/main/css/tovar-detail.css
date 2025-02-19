@@ -126,6 +126,8 @@ form input[type="submit"]:hover {
 }
 
 .quantity-input {
+  width: 80px;
+  height: 80px;
   margin: 10px 0;
 }
 
