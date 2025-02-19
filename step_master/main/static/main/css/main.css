@@ -60,7 +60,12 @@ a {
     display: flex;
     align-items: center;
     padding-right: 5px;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
 
+.header_up-logo:hover {
+    color: rgb(170, 27, 97); 
+    transform: scale(1.05);
 }
 
 
@@ -159,15 +164,26 @@ input:focus::placeholder {
     text-align: center;
     padding: 10px 35px;
     border: none;
-
-
+    cursor: pointer;
 }
+
+.heaeder_up-btn:hover {
+    background: rgb(170, 27, 97);
+    color: rgb(255, 255, 255);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    transform: scale(1.05);
+    transition: all 0.3s ease; 
+}
+
 
 .cart-img {
     width: 40px;
     height: 40px;
+    transition: color 0.3s ease, transform 0.3s ease;
 }
-
+.cart-img:hover {
+    transform: scale(1.05); 
+}
 .header_down-list {
     display: flex;
     gap: 32px;
@@ -181,6 +197,11 @@ input:focus::placeholder {
     line-height: 28px;
     letter-spacing: 0.75px;
     text-align: left;
+}
+
+.header_down-item:hover {
+    color: rgb(170, 27, 97);
+    transform: scale(1.05); 
 }
 
 
@@ -217,7 +238,6 @@ input:focus::placeholder {
 }
 
 .swiper-slide-p2 {
-    /* Text Medium - Desktop */
     color: rgb(71, 71, 71);
     font-family: Inter;
     font-size: 18px;
@@ -241,6 +261,15 @@ input:focus::placeholder {
     text-align: center;
     padding: 10px 49px;
     border: none;
+    cursor: pointer;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.swiper-slide-btn:hover{
+    background: rgb(170, 27, 97); 
+    color: rgb(255, 255, 255); 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease; 
 }
 
 
@@ -378,8 +407,16 @@ input:focus::placeholder {
     letter-spacing: 0.75px;
     text-align: center;
     border: none;
+    cursor: pointer;
+    transition: background 0.3s, box-shadow 0.3s; 
 }
-
+.collection_sale-item-btn:hover{
+    background: rgb(170, 27, 97); 
+    color: rgb(255, 255, 255); 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    transform: scale(1.05);
+    transition: all 0.3s ease;
+}
 
 .header_down-item--active {
     color: rgb(201, 32, 113);
@@ -576,6 +613,12 @@ input:focus::placeholder {
     letter-spacing: 0.75px;
     text-align: left;
     margin-right: 30px;
+    transition: color 0.3s ease, transform 0.3s ease; 
+}
+
+.produtos-text-a:hover{
+    color: rgb(170, 27, 97); 
+    transform: scale(1.05); 
 }
 
 
@@ -1327,7 +1370,7 @@ form .form-group {
         height: 30px;
     }
 
-    .logo-img{
+    .logo-img {
         width: 20px;
         height: 20px;
     }
@@ -1358,14 +1401,14 @@ form .form-group {
         padding-bottom: 15px;
     }
 
-    .swiper-slide_rigth_sneaker{
+    .swiper-slide_rigth_sneaker {
         display: none;
     }
 
-    .swiper-slide_rigth_ornament{
+    .swiper-slide_rigth_ornament {
         display: none;
     }
-    
+
     .swiper-slide-h {
         color: rgb(31, 31, 31);
         font-family: Inter;
@@ -1431,7 +1474,7 @@ form .form-group {
         width: 340px;
     }
 
-    .footer_contact{
+    .footer_contact {
         padding-bottom: 10px;
     }
 

@@ -7,11 +7,10 @@
     <title>{% block title %}{% endblock %}</title>
     {% load static %}
     <link rel="stylesheet" href="{% static 'main/css/main.css' %}">
+    <link rel="shortcut icon" href="{% static 'main/img/whiteSneaker.png' %}" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 </head>
 
@@ -84,12 +83,14 @@
     {% block content %}
 
     {% endblock %}
+
+    
     <footer class="footer">
         <div class="container">
             <div class="footer_all">
                 <div class="footer_left">
                     <div class="footer_logo">
-                        <img class="header_up-logo" src="images/footer_logo.svg" alt="">
+                        <img class="header_up-logo" src="{% static 'main/img/footer_logo.svg' %}" alt="">
                         <h1 class="footer_all-h">
                             StepMaster
                         </h1>

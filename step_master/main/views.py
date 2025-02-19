@@ -12,7 +12,7 @@ from django.contrib.auth.decorators import login_required
 # Отображение списка товаров с фильтрацией по категориям
 def product_list(request):
     categories = Category.objects.all()
-    selected_categories = request.GET.getlist('categories')  # Список выбранных категорий
+    selected_categories = request.GET.getlist('categories') 
     products = Product.objects.filter(available=True)
 
     # Фильтруем товары по выбранным категориям
@@ -43,8 +43,8 @@ def tovar(request):
 
 # Функция для отображения деталей товара
 def product_detail(request, id, slug):
-    product = get_object_or_404(Product, id=id, slug=slug, available=True)  # Получаем товар по id и slug
-    cart_product_form = CartAddProductForm()  # Создаем форму добавления товара в корзину
+    product = get_object_or_404(Product, id=id, slug=slug, available=True) 
+    cart_product_form = CartAddProductForm() 
     return render(request, 'main/product_detail.html', {
         'product': product,
         'cart_product_form': cart_product_form
@@ -96,7 +96,7 @@ def custom_logout(request):
 def place_order(request):
     if request.method == 'POST':
         # Логика оформления заказа
-        return redirect('success_page')  # Перенаправление на страницу успешного оформления
+        return redirect('success_page')  
     return render(request, 'order_form.html')
 
 
