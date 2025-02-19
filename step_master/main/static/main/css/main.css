@@ -1030,9 +1030,9 @@ form select {
 
 form input:focus,
 form select:focus {
-    border-color: #007bff;
+    border-color: rgb(201, 32, 113);
     outline: none;
-    box-shadow: 0 0 4px rgba(0, 123, 255, 0.5);
+    box-shadow: 0 0 4px rgb(201, 32, 113);
 }
 
 
@@ -1040,7 +1040,7 @@ form select:focus {
     padding: 10px 20px;
     font-size: 16px;
     color: #fff;
-    background-color: #007bff;
+    background-color: rgb(201, 32, 113);
     border: none;
     border-radius: 4px;
     cursor: pointer;
@@ -1048,11 +1048,15 @@ form select:focus {
 }
 
 .auth-button:hover {
-    background-color: #0056b3;
+    background: rgb(170, 27, 97);
+    color: rgb(255, 255, 255);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    transform: scale(1.05);
+    transition: all 0.3s ease; 
 }
 
 .auth-container .errorlist {
-    color: #d9534f;
+    color: rgb(201, 32, 113);
     margin-bottom: 15px;
 }
 
