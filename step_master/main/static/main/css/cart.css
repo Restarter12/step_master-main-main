@@ -17,9 +17,7 @@
   transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-.cart{
-  margin-bottom: 40px;
-}
+
 
 .button-light {
   background-color: #f1f1f1;
@@ -59,6 +57,7 @@
 .cart td {
   padding: 10px;
   text-align: left;
+  
 }
 
 .cart th {
@@ -88,12 +87,6 @@
   vertical-align: middle;
 }
 
-.cart img {
-  width: 50px;
-  height: 50px;
-  object-fit: cover;
-}
-
 .cart .num {
   font-weight: bold;
 }
@@ -117,6 +110,7 @@
   display: inline-block;
   margin-top: 20px;
   transition: background-color 0.3s;
+
 }
 
 .cart .button:hover {
@@ -137,7 +131,7 @@
 }
 
 .cart form input[type="submit"] {
-  background-color: #28a745;
+  background-color: rgb(201, 32, 113);
   color: white;
   border: none;
   padding: 5px 10px;
@@ -147,7 +141,16 @@
 }
 
 .cart form input[type="submit"]:hover {
-  background-color: #218838;
+  background: rgb(170, 27, 97);
+  color: rgb(255, 255, 255);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+  transform: scale(1.05);
+  transition: all 0.3s ease; 
+}
+
+.btn-delete:hover{
+  color: rgb(170, 27, 97);
+  transform: scale(1.05); 
 }
 
 .cart .cart-remove {
@@ -163,8 +166,15 @@
 .text-right {
   text-align: right;
   margin-right: 20px;
-}.cart img {
+  margin-bottom: 40px;
+}.cart-img {
   width: 40px;
   height: 40px;
+  object-fit: cover;
+}
+
+.img_product{
+  width: 70px;
+  height: 60px;
   object-fit: cover;
 }

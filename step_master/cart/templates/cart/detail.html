@@ -27,7 +27,7 @@
       <tr>
         <td>
           <a href="{{ product.get_absolute_url }}">
-            <img
+            <img class="img_product"
               src="{% if product.image %}{{ product.image.url }}{% else %}{% static 'img/no_image.png' %}{% endif %}">
           </a>
         </td>
@@ -40,7 +40,7 @@
             {% csrf_token %}
           </form>
         </td>
-        <td><a href="{% url 'cart:cart_remove' product.id %}">Удалить</a></td>
+        <td><a class="btn-delete" href="{% url 'cart:cart_remove' product.id %}">Удалить</a></td>
         <td>
           {{ item.quantity }}
         </td>

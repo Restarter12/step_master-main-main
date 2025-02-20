@@ -31,8 +31,8 @@
                 <div class="cart">
                     {% with total_items=cart|length %}
                     {% if total_items > 0 %}
-                    В корзине
                     <a href="{% url 'cart:cart_detail' %}">
+                        В корзине
                         {{ total_items }}шт, ₽{{ cart.get_total_price }}
                     </a>
                     {% else %}
@@ -96,14 +96,6 @@
                     <p class="footer_all-p">Наш магазин обуви предлагает широкий ассортимент стильной и качественной
                         обуви <br> для всех возрастов и предпочтений.</p>
 
-                    <ul class="footer_all-list">
-                        <li class="footer_all-item"><a href="#"><img src="{% static 'main/img/facebook.svg' %}"
-                                    alt=""></a></li>
-                        <li class="footer_all-item"><a href="#"><img src="{% static 'main/img/instagram.svg' %}"
-                                    alt=""></a></li>
-                        <li class="footer_all-item"><a href="#"><img src="{% static 'main/img/twiter.svg' %}"
-                                    alt=""></a></li>
-                    </ul>
                 </div>
                 <div class="footer_center">
                     <h3 class="footer_center-h">Информация</h3>
@@ -145,13 +137,6 @@
                         </a>
 
                     </ul>
-                </div>
-                <div class="footer_contact">
-                    <h3 class="footer_center-h">Контакты</h3>
-                    <p class="footer_contact-p">
-                        Av. Santos Dumont, 1510 - 1 <br> andar - Aldeota, Fortaleza - <br> CE, 60150-161
-                    </p>
-                    <a href="#" class="footer_contact-number">(85) 3051-3411</a>
                 </div>
             </div>
         </div>

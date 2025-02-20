@@ -1,0 +1,79 @@
+{% extends 'main/layout.html' %}
+
+{% block content %}
+<div class="container">
+    <h2>Оформление заказа</h2>
+
+    {% if messages %}
+        <div id="toast-container">
+            {% for message in messages %}
+                <div class="toast {{ message.tags }}">{{ message }}</div>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    {% if cart %}
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                {{ form.as_p }}
+            </div>
+            <button type="submit" class="btn btn-primary">Оформить заказ</button>
+        </form>
+    {% else %}
+        <p>Ваша корзина пуста. <a href="{% url 'product_list' %}">Перейти к покупкам</a></p>
+    {% endif %}
+</div>
+
+<style>
+    .container {
+        max-width: 600px;
+        margin: 50px auto;
+        padding: 20px;
+        border-radius: 10px;
+        background: #f9f9f9;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    .btn-primary {
+        background-color: #007bff;
+        border: none;
+        padding: 10px 15px;
+        font-size: 16px;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+    .btn-primary:hover {
+        background-color: #0056b3;
+    }
+    #toast-container {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        z-index: 9999;
+    }
+    .toast {
+        background-color: #333;
+        color: white;
+        padding: 15px 20px;
+        margin-bottom: 10px;
+        border-radius: 5px;
+        opacity: 1;
+        transition: opacity 0.5s ease-in-out;
+    }
+    .toast.success { background-color: green; }
+    .toast.error { background-color: red; }
+</style>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        setTimeout(function() {
+            let toasts = document.querySelectorAll(".toast");
+            toasts.forEach(toast => {
+                toast.style.opacity = "0";
+                setTimeout(() => toast.remove(), 500);
+            });
+        }, 3000);
+    });
+</script>
+
+{% endblock %}

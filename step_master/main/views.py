@@ -92,11 +92,26 @@ def custom_logout(request):
     return redirect('/')
 
 
-@login_required
-def place_order(request):
+@login_required(login_url='login')  # Если не авторизован, редиректит на страницу логина
+def submit_order(request):
+    cart = Cart(request)
+    
+    if len(cart) == 0:
+        messages.error(request, "Корзина пуста. Добавьте товары перед оформлением заказа.")
+        return redirect('cart:cart_detail')
+
     if request.method == 'POST':
-        # Логика оформления заказа
-        return redirect('success_page')  
-    return render(request, 'order_form.html')
+        form = OrderForm(request.POST)
+        if form.is_valid():
+            order = form.save(commit=False)
+            order.user = request.user
+            order.total_price = cart.get_total_price()
+            order.products = ", ".join([f"{item['product']} (x{item['quantity']})" for item in cart])
+            order.save()
+            cart.clear()
+            return redirect('success')
+    else:
+        form = OrderForm()
 
-
+    
+    return render(request, 'main/tovar.html', {'form': form})
