@@ -4,11 +4,13 @@ from cart.forms import CartAddProductForm
 from .forms import OrderForm
 from cart.cart import Cart
 from django.contrib import messages 
-from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth import login
 from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
-
+from .models import Order
+from .forms import CustomUserCreationForm
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth import login
+from .models import Profile
 # Отображение списка товаров с фильтрацией по категориям
 def product_list(request):
     categories = Category.objects.all()
@@ -78,13 +80,14 @@ def success(request):
 
 def register(request):
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
+        form = CustomUserCreationForm(request.POST)
         if form.is_valid():
-            user = form.save()
-            login(request, user)
-            return redirect('home')
+            user = form.save()  # Сохраняем пользователя и профиль через форму
+            login(request, user)  # Логиним пользователя
+            return redirect('home')  # Редирект на главную страницу
     else:
-        form = UserCreationForm()
+        form = CustomUserCreationForm()
+
     return render(request, 'main/register.html', {'form': form})
 
 def custom_logout(request):
@@ -115,3 +118,43 @@ def submit_order(request):
 
     
     return render(request, 'main/tovar.html', {'form': form})
+
+
+@login_required
+def profile(request):
+    # Получаем все заказы пользователя
+    orders = Order.objects.filter(user=request.user)
+
+    return render(request, 'main/profile.html', {
+        'user': request.user,
+        'orders': orders
+    })
+
+
+@login_required
+def delete_order(request, order_id):
+    # Получаем заказ по ID
+    order = get_object_or_404(Order, id=order_id, user=request.user)
+    
+    # Удаляем заказ
+    order.delete()
+
+    # Отправляем сообщение об успехе
+    messages.success(request, "Ваш заказ был удалён.")
+
+    # Перенаправляем обратно на страницу профиля или на другую страницу
+    return redirect('profile')  
+
+@login_required
+def profile(request):
+    # Создаем профиль пользователя, если его нет
+    profile, created = Profile.objects.get_or_create(user=request.user)
+
+    # Получаем заказы пользователя
+    orders = Order.objects.filter(user=request.user)
+
+    return render(request, 'main/profile.html', {
+        'user': request.user,
+        'profile': profile,
+        'orders': orders
+    })

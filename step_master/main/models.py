@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils.safestring import mark_safe
+from django.contrib.auth.models import User
 
 # Категории товаров
 class Category(models.Model):
@@ -59,9 +60,21 @@ class Order(models.Model):
     name = models.CharField(max_length=255)
     email = models.EmailField()
     phone = models.CharField(max_length=20)
-    total_price = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)  # Общая сумма
+    total_price = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
+  # Общая сумма
     products = models.TextField(blank=True)  # Названия товаров (можно хранить как текст)
     created_at = models.DateTimeField(auto_now_add=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, default=1)  
 
     def __str__(self):
         return f"Order {self.id} by {self.name}"
+
+
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    phone_number = models.CharField(max_length=15, blank=True, null=True)  # Можно добавить больше информации, если нужно.
+
+    def __str__(self):
+        return self.user.username  # Используем username вместо name
+    
+

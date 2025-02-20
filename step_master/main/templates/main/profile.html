@@ -1,0 +1,35 @@
+{% extends "main/layout.html" %}
+{% load static %}
+
+{% block title %}
+Корзина покупок
+{% endblock %}
+
+{% block content %}
+<h1>Профиль пользователя: {{ user.username }}</h1>
+
+<!-- Профиль пользователя -->
+<p><strong>Имя пользователя:</strong> {{ user.username }}</p>
+<p><strong>Телефон:</strong> {% if profile.phone_number %}{{ profile.phone_number }}{% else %}Не указан{% endif %}</p>
+
+<!-- История заказов -->
+<h2>История заказов</h2>
+{% if orders %}
+    <ul>
+    {% for order in orders %}
+        <li>
+            <strong>Заказ #{{ order.id }}</strong> - {{ order.created_at }}<br>
+            <p><strong>Телефон:</strong> {% if profile and profile.phone_number %}{{ profile.phone_number }}{% else %}Не указан{% endif %}</p>  
+            <strong>Товары:</strong> {{ order.products }}
+        </li>
+        <form action="{% url 'delete_order' order.id %}" method="post" style="display:inline;">
+            {% csrf_token %}
+            <button type="submit" class="btn-delete">Удалить заказ</button>
+        </form>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>У вас нет заказов.</p>
+{% endif %}
+
+{% endblock %}
