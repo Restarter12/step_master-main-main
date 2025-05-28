@@ -954,17 +954,20 @@ input:focus {
 
 .return-home-link {
     text-decoration: none;
-    color: #007bff;
+    color: rgb(201, 32, 113);
     font-size: 18px;
-    border: 1px solid #007bff;
+    border: 1px solid rgb(201, 32, 113);
     padding: 10px 20px;
     border-radius: 5px;
     transition: background-color 0.3s, color 0.3s;
 }
 
 .return-home-link:hover {
-    background-color: #007bff;
-    color: white;
+    background: rgb(170, 27, 97);
+    color: rgb(255, 255, 255);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    transform: scale(1.05);
+    transition: all 0.3s ease; 
 }
 
 
@@ -983,6 +986,11 @@ input:focus {
 
 
 /* регистрация */
+
+.user-auth{
+    display: flex;
+    gap: 10px;
+}
 
 .auth-container {
     max-width: 400px;

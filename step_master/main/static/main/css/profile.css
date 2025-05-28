@@ -1,0 +1,78 @@
+/* Заголовки */
+.profile-title {
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.orders-title {
+    font-size: 22px;
+    color: #444;
+    margin-top: 20px;
+    text-align: center;
+}
+
+/* Контейнер профиля */
+.profile-container {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.profile-info {
+    font-size: 16px;
+    color: #555;
+    margin: 5px 0;
+}
+
+/* История заказов */
+.orders-container {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    margin: 20px auto;
+}
+
+.orders-list {
+    list-style: none;
+    padding: 0;
+}
+
+.order-item {
+    background: #f1f1f1;
+    margin: 10px 0;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.order-info {
+    font-size: 16px;
+    color: #444;
+    margin: 5px 0;
+}
+
+/* Кнопка удаления */
+.btn-delete {
+    background-color: rgb(201, 32, 113);
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background 0.3s ease;
+}
+.btn-delete:hover {
+    background: rgb(170, 27, 97); 
+    color: rgb(255, 255, 255); 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease; 
+}
+

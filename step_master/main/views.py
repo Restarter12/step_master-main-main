@@ -11,6 +11,7 @@ from .forms import CustomUserCreationForm
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login
 from .models import Profile
+from .models import ContactMessage
 # Отображение списка товаров с фильтрацией по категориям
 def product_list(request):
     categories = Category.objects.all()
@@ -77,7 +78,7 @@ def submit_order(request):
 def success(request):
     return render(request, 'main/success.html')
 
-
+# регистрация
 def register(request):
     if request.method == 'POST':
         form = CustomUserCreationForm(request.POST)
@@ -95,6 +96,7 @@ def custom_logout(request):
     return redirect('/')
 
 
+# проверка на регисрацию
 @login_required(login_url='login')  # Если не авторизован, редиректит на страницу логина
 def submit_order(request):
     cart = Cart(request)
@@ -119,7 +121,7 @@ def submit_order(request):
     
     return render(request, 'main/tovar.html', {'form': form})
 
-
+# история заказа в профиле
 @login_required
 def profile(request):
     # Получаем все заказы пользователя
@@ -130,7 +132,7 @@ def profile(request):
         'orders': orders
     })
 
-
+# удаление заказа
 @login_required
 def delete_order(request, order_id):
     # Получаем заказ по ID
@@ -145,6 +147,8 @@ def delete_order(request, order_id):
     # Перенаправляем обратно на страницу профиля или на другую страницу
     return redirect('profile')  
 
+
+# создание профиля
 @login_required
 def profile(request):
     # Создаем профиль пользователя, если его нет
@@ -158,3 +162,20 @@ def profile(request):
         'profile': profile,
         'orders': orders
     })
+
+
+# форма обратной связи
+def contact_view(request):
+    if request.method == "POST":
+        name = request.POST.get("name")
+        email = request.POST.get("email")
+        message = request.POST.get("message")
+
+        if name and email and message:
+            ContactMessage.objects.create(name=name, email=email, message=message)
+            messages.success(request, "Ваше сообщение отправлено! Мы ответим вам в ближайшее время.")
+            return redirect("about")  
+        else:
+            messages.error(request, "Пожалуйста, заполните все поля.")
+
+    return render(request, "main/about.html")

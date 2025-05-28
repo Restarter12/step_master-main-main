@@ -13,12 +13,13 @@
     text-align: center;
     padding-bottom: 58px;
 }
+
 .produtos_filter {
     position: sticky;
-    top: 20px; 
-    align-self: flex-start; 
+    top: 20px;
+    align-self: flex-start;
     z-index: 10;
-    background: white; 
+    background: white;
     padding: 15px;
     transition: box-shadow 0.3s ease-in-out;
 }
@@ -36,14 +37,14 @@
     gap: 10px;
 }
 
-input[type = "checkbox"]{
+input[type="checkbox"] {
     cursor: pointer;
 }
 
 .produtos_main {
     display: flex;
     min-height: 100vh;
-    align-items: flex-start; 
+    align-items: flex-start;
 }
 
 .produtos_filter-item {
@@ -61,7 +62,7 @@ input[type = "checkbox"]{
     line-height: 22px;
     letter-spacing: 0.25px;
     text-align: left;
-    cursor: pointer; 
+    cursor: pointer;
 }
 
 .produtos_filter-item-input {
@@ -114,12 +115,12 @@ input[type = "checkbox"]{
     margin-bottom: 20px;
 }
 
-.produtos_main-h{
+.produtos_main-h {
     font-size: 30px;
     padding-top: 58px;
 }
 
-.produtos_item-up-img-sale{
+.produtos_item-up-img-sale {
     width: 275px;
     height: 250px;
     margin-left: 10px;
@@ -127,7 +128,7 @@ input[type = "checkbox"]{
 }
 
 
-.filter-button{
+.filter-button {
     font-family: Inter;
     padding: 10px;
     background-color: rgb(201, 32, 113);
@@ -135,15 +136,17 @@ input[type = "checkbox"]{
     border: none;
     margin-bottom: 20px;
     cursor: pointer;
-    transition: background 0.3s, box-shadow 0.3s; 
+    transition: background 0.3s, box-shadow 0.3s;
 }
 
 .filter-button:hover {
-    background: rgb(255, 45, 130); /* Изменение цвета фона */
-    box-shadow: 0 0 15px rgba(201, 32, 113, 0.8); /* Добавление тени */
+    background: rgb(255, 45, 130);
+    /* Изменение цвета фона */
+    box-shadow: 0 0 15px rgba(201, 32, 113, 0.8);
+    /* Добавление тени */
 }
 
-.show-all-button{
+.show-all-button {
     font-family: Inter;
     padding: 10px;
     background-color: rgb(201, 32, 113);
@@ -152,7 +155,23 @@ input[type = "checkbox"]{
     cursor: pointer;
     transition: background 0.3s, box-shadow 0.3s;
 }
+
 .show-all-button:hover {
-    background: rgb(255, 45, 130); /* Изменение цвета фона */
-    box-shadow: 0 0 15px rgba(201, 32, 113, 0.8); /* Добавление тени */
+    background: rgb(255, 45, 130);
+    /* Изменение цвета фона */
+    box-shadow: 0 0 15px rgba(201, 32, 113, 0.8);
+    /* Добавление тени */
+}
+
+
+@media (max-width: 426px) {
+    .produtos_filter {
+        position: static;
+        top: 20px;
+        align-self: flex-start;
+        z-index: 10;
+        background: white;
+        padding: 15px;
+        transition: box-shadow 0.3s ease-in-out;
+    }
 }

@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.utils.safestring import mark_safe
 from .models import Category, Product, ProductImage
 from .models import Order 
-
+from .models import ContactMessage
 def image_show(self, obj):
     """Метод для отображения изображения в админке"""
     if obj.image:
@@ -58,3 +58,9 @@ class OrderAdmin(admin.ModelAdmin):
         ]
 
 
+@admin.register(ContactMessage)
+class ContactMessageAdmin(admin.ModelAdmin):
+    list_display = ("name", "email", "created_at")  # Какие поля показывать в списке
+    search_fields = ("name", "email", "message")  # Поиск по этим полям
+    list_filter = ("created_at",)  # Фильтр по дате
+    readonly_fields = ("created_at",)  # Поле только для чтения

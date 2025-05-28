@@ -2,7 +2,7 @@ from django.urls import path
 from . import views
 from django.contrib.auth import views as auth_views
 from django.contrib.auth.views import LogoutView
-
+from .views import contact_view
 urlpatterns = [
     path('', views.index, name="home"),
     path('about/', views.about, name="about"),
@@ -16,4 +16,5 @@ urlpatterns = [
     path('register/', views.register, name='register'),
     path('profile/', views.profile, name='profile'),
     path('order/delete/<int:order_id>/', views.delete_order, name='delete_order'),
+    path("contact/", contact_view, name="contact"),
 ]
